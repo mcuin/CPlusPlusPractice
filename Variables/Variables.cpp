@@ -19,6 +19,12 @@ int main() {
     cout << result2 << endl;
     cout << result1 << endl;
 
+    int foo1 = 0;
+    auto bar1 = foo1;
+    cout << bar1 << endl;
 
-    return 0;
+    int foo2 = 0;
+    decltype(foo2) bar2;
+    cout << bar2 << endl;
+
 }
