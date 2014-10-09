@@ -11,8 +11,25 @@ class CVector{
 
 class Dummy{
     public:
-        bool isItMe(Dummy& param);
+        static int n;
+        Dummy(){
+            n++;
+        };
+        ~Dummy(){
+            n--;
+        };
 };
+
+class myClass{
+    public:
+        int x;
+        myClass(int val) : x(val) {};
+        int get() {
+            return x;
+        }
+};
+
+int Dummy::n = 0;
 
 CVector operator+ (const CVector& lhs, const CVector& rhs) {
     CVector temp;
@@ -21,13 +38,13 @@ CVector operator+ (const CVector& lhs, const CVector& rhs) {
     return temp;
 }
 
-bool Dummy::isItMe (Dummy& param) {
+/*bool Dummy::isItMe (Dummy& param) {
     if (&param == this) {
         return true;
     } else {
         return false;
     }
-}
+}*/
 
 int main() {
     CVector foo(3, 1);
@@ -37,10 +54,19 @@ int main() {
     cout << result.x << ", " << result.y << endl;
 
     Dummy a;
-    Dummy* b = &a;
+    /*Dummy* b = &a;
     if (b -> isItMe(a)) {
         cout << "yes, &a is b\n";
-    }
+    }*/
+    Dummy b[5];
+    Dummy * c = new Dummy;
+
+    cout << a.n << '\n';
+    delete c;
+    cout << Dummy::n << endl;
+
+    const myClass foo2(10);
+    cout << foo2.x << endl;
 
     return 0;
 }
