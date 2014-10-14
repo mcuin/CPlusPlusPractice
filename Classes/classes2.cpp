@@ -24,7 +24,11 @@ class myClass{
     public:
         int x;
         myClass(int val) : x(val) {};
-        int get() {
+        const int& get() const {
+            return x;
+        }
+
+        int& get() {
             return x;
         }
 };
@@ -45,6 +49,10 @@ CVector operator+ (const CVector& lhs, const CVector& rhs) {
         return false;
     }
 }*/
+
+void print(const myClass& arg) {
+    cout << arg.get() << '\n';
+}
 
 int main() {
     CVector foo(3, 1);
@@ -68,5 +76,15 @@ int main() {
     const myClass foo2(10);
     cout << foo2.x << endl;
 
+    print(foo2);
+
     return 0;
+
+    const myClass foo3(10);
+    myClass bar2(20);
+
+    foo3.get() = 15;
+
+    cout << foo3.get() << endl;
+    cout << bar2.get() << endl;
 }
